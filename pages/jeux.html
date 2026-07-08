@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Jeux - Noxir-RP</title>
+    <title>Jeux - Noxir-RP</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- Jeux Mini -->
+            <!-- Mini-Jeux -->
             <div class="game-card">
                 <div class="game-header">
                     <i class="fas fa-gamepad"></i>
@@ -153,7 +153,9 @@
     <!-- Outils -->
     <section style="background-color: var(--secondary-color); padding: 4rem 0; margin-top: 2rem;">
         <div class="container">
-            <h2 style="color: var(--primary-color); text-align: center; margin-bottom: 2rem;">Outils Utiles</h2>
+            <h2 style="color: var(--primary-color); text-align: center; margin-bottom: 2rem;">
+                <i class="fas fa-tools"></i> Outils Utiles
+            </h2>
             
             <!-- Calculatrice XP -->
             <div id="calculator" style="background-color: var(--card-bg); padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
@@ -164,21 +166,22 @@
                     <div>
                         <label for="current-level">Niveau actuel:</label>
                         <input type="number" id="current-level" min="1" max="100" value="1" 
-                               style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border-radius: 5px; border: none;">
+                               style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border-radius: 5px; border: none; background-color: rgba(255,255,255,0.1); color: var(--text-color);">
                     </div>
                     <div>
                         <label for="target-level">Niveau cible:</label>
                         <input type="number" id="target-level" min="1" max="100" value="50" 
-                               style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border-radius: 5px; border: none;">
+                               style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border-radius: 5px; border: none; background-color: rgba(255,255,255,0.1); color: var(--text-color);">
                     </div>
                 </div>
                 <button onclick="calculerXP()" style="background-color: var(--primary-color); color: white; 
-                        padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
+                        padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
                     Calculer
                 </button>
                 <div id="xp-result" style="margin-top: 1rem; display: none; background-color: rgba(249, 115, 22, 0.1); 
                      padding: 1rem; border-radius: 5px; border-left: 4px solid var(--accent-color);">
-                    <p id="xp-text"></p>
+                    <p id="xp-text" style="color: var(--text-color);"></p>
                 </div>
             </div>
 
@@ -189,12 +192,13 @@
                 </h3>
                 <p>Besoin d'un nom pour votre personnage? Laissez le générateur vous inspirer!</p>
                 <button onclick="genererNom()" style="background-color: var(--primary-color); color: white; 
-                        padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem;">
+                        padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem; font-weight: bold; transition: all 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='var(--accent-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
                     Générer un Nom
                 </button>
                 <div id="name-result" style="margin-top: 1rem; display: none; background-color: rgba(139, 92, 246, 0.1); 
                      padding: 1rem; border-radius: 5px; border-left: 4px solid var(--primary-color);">
-                    <p id="name-text" style="font-size: 1.25rem; font-weight: bold;"></p>
+                    <p id="name-text" style="font-size: 1.25rem; font-weight: bold; color: var(--accent-color);"></p>
                 </div>
             </div>
         </div>
@@ -232,12 +236,12 @@
             const targetLevel = parseInt(document.getElementById('target-level').value);
             
             if (currentLevel >= targetLevel) {
-                document.getElementById('xp-text').textContent = 'Le niveau cible doit être supérieur au niveau actuel.';
+                document.getElementById('xp-text').textContent = '❌ Le niveau cible doit être supérieur au niveau actuel.';
             } else {
                 const xpPerLevel = 1000;
                 const xpNeeded = (targetLevel - currentLevel) * xpPerLevel;
                 document.getElementById('xp-text').textContent = 
-                    `XP nécessaire: ${xpNeeded.toLocaleString()} (${(xpNeeded / 1000).toFixed(1)}k)`;
+                    `✅ XP nécessaire: ${xpNeeded.toLocaleString()} (${(xpNeeded / 1000).toFixed(1)}k)`;
             }
             
             document.getElementById('xp-result').style.display = 'block';
